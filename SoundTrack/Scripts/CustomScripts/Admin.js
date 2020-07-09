@@ -761,6 +761,7 @@ function logoutUser() {
         }
     });
 }
+//Restrict Date
 function restrictDate() {
     var dtToday = new Date();
 
