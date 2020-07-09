@@ -1,0 +1,56 @@
+﻿
+<div id="UserSection" style="display:none;">
+    <span class="d-flex justify-content-center h3 bg-light py-2"> User's Records</span>
+    <div class="d-md-flex col-md-12 p-0">
+        <div class="ml-auto">
+            <button type="button" class="btn btn-info mb-3" id="addUsrBtn"
+                    data-toggle="modal" data-target="#addUserModal">
+                <i class="fas fa-plus mr-2"></i>Add User
+            </button>
+        </div>
+    </div>
+    <table class="table table-striped" id="CustomerTable" style="width:100%">
+        <thead>
+            <tr>
+                @*<th></th>*@
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div id="usrViewSection" style="display:none;">
+    <span class="d-flex justify-content-center h3 bg-light py-2"> User View</span>
+    <div class="d-flex justify-content-center">
+        <table class="table table-striped col-md-10" id="usrViewTable">
+            <tr>
+                <td>Name</td>
+                <td id="usrName"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td id="usrEmail"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td id="usrPhone"></td>
+            </tr>
+            <tr>
+                <td>Date Of Birth</td>
+                <td id="usrDOB"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td id="usrAddress"></td>
+            </tr>
+            
+        </table>
+    </div>
+    <hr />
+</div>

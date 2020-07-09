@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c80c706c1f6f42e787d2e0ce7316f902" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="SoundTrackModel.CD" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.CDType" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.MembershipToUser" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.MembershipType" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.Order" Width="1.5" PointX="5.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.UserRentedCD" Width="1.5" PointX="8.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.User" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoundTrackModel.UserTypeMaster" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="SoundTrackModel.FK_CD_CDType" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_CD_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_MembershipToUser_MembershipType" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_MembershipToUser_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_Order_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_UserRentedCD_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_Users_UserTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="SoundTrackModel.FK_UserRentedCD_CD" />
+        <EntityTypeShape EntityType="SoundTrackModel.CDsTypeView" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SoundTrackModel.MembershipRequest" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

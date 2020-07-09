@@ -1,0 +1,77 @@
+﻿@model SoundTrack.ViewModel.UserViewModel
+
+<div class="modal fade" id="registerModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="registerModalLabel">User Registration</h5>
+                <button type="button" class="close closeBtn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="text-white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-light">
+                <form id="userRegistrationForm">
+                    <div class="form-group">
+                        <div class="d-md-flex">
+                            <label for="uName" class="col-form-label col-md-2 px-0">Name:</label>
+                            <div class="px-0  col-md-10">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control ", id = "rName", placeholder = "Name", @autofocus = "autofocus" })
+                                @Html.ValidationMessageFor(m => m.Name, "")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-md-flex">
+                            <label for="userEmail" class="col-form-label col-md-2 px-0">Email:</label>
+                            <div class="px-0  col-md-10" id="rUserEmail">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "rEmail", placeholder = "name@example.com" })
+                                @Html.ValidationMessageFor(m => m.Email, "")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-md-flex">
+                            <label for="uPassword" class="col-form-label col-md-2 px-0">Password:</label>
+                            <div class="px-0  col-md-10">
+                                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", id = "rPassword", placeholder = "Password", type = "password" })
+                                @Html.ValidationMessageFor(m => m.Password, "")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-md-flex">
+                            <label for="uPhone" class="col-md-2 p-0">Phone:</label>
+                            <div class="col-md-10 px-0">
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control m-0 ", id = "rPhone", placeholder = "Phone Number" })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "input-msg-error" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-md-flex">
+                            <label for="uDOB" class="col-md-2 p-0">DOB:</label>
+                            <div class="col-md-10 px-0">
+                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control m-0", id = "rDOB", type = "date" })
+                                @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "input-msg-error" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-md-flex">
+                            <label for="uAddress" class="col-md-2 p-0">Address:</label>
+                            <div class="col-md-10 px-0">
+                                @Html.TextAreaFor(m => m.Address, new { @class = "form-control m-0", id = "rAddress", rows = "2" })
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "input-msg-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="userRegisterBtn">Submit</button>
+                        <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SoundTrack</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/css/dataTables.bootstrap4.min.css"
+        integrity="sha256-F+DaKAClQut87heMIC6oThARMuWne8+WzxIDT7jXuPA="
+        crossorigin="anonymous" />*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+          integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha256-ENFZrbVzylNbgnXx0n3I1g//2WeO47XxoPe0vkp3NC8="
+          crossorigin="anonymous" />
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <div class="mainDiv">
+        <input type="hidden" value="@Session["UserId"]" id="sessionHdInput" />
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-0 mb-0">
+            <div class="container-fluid">
+                <img class="navbar-brand p-0 img-dim" src="~/Content/images/Sountrack.PNG" />
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mr-4">
+                            <input class="form-control mr-sm-2" type="search" id="filterCd" placeholder="Search" aria-label="Search">
+                        </li>
+                        <li class="nav-item" id="LoginUser">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#LogInModal">Login </a>
+                        </li>
+                        <li class="nav-item" id="memberShip">
+                            <a class="nav-link" href="#">Membership</a>
+                        </li>
+                        <li class="nav-item" id="logOutList">
+                            <a class="nav-link" href="#" id="logOut">Log Out</a>
+                        </li>
+                    </ul>
+                    @*<form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" id="filterCd" placeholder="Search" aria-label="Search">
+                        </form>*@
+                </div>
+
+            </div>
+        </nav>
+        <div class="px-0 body-content">
+            @RenderBody()
+
+        </div>
+        @*<div class="footerDiv">
+                <hr />
+                <footer>
+                    <p class="center">&copy; @DateTime.Now.Year - SoundTrack</p>
+                </footer>
+            </div>*@
+    </div>
+    @* Model Section *@
+
+
+    @* Script Section *@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+            integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha256-3blsJd4Hli/7wCQ+bmgXfOdK7p/ZUMtPXY08jmxSSgk="
+            crossorigin="anonymous"></script>
+    <script src="~/Scripts/CustomScripts/Home.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

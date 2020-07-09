@@ -1,0 +1,859 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SoundTrackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Publisher" Type="varchar" MaxLength="100" />
+          <Property Name="Genre" Type="varchar" MaxLength="100" />
+          <Property Name="Artist" Type="varchar" MaxLength="100" />
+          <Property Name="Composer" Type="varchar" MaxLength="100" />
+          <Property Name="Language" Type="varchar" MaxLength="100" />
+          <Property Name="GameMode" Type="varchar" MaxLength="100" />
+          <Property Name="Developer" Type="varchar" MaxLength="100" />
+          <Property Name="CDTypeId" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" />
+          <Property Name="TotalCD" Type="int" />
+          <Property Name="CDLeft" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="CDType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MembershipToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MembershipTypeId" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateExpired" Type="datetime" />
+          <Property Name="IsRequested" Type="bit" />
+          <Property Name="IsExpired" Type="bit" />
+        </EntityType>
+        <EntityType Name="MembershipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNumber" Type="bigint" />
+          <Property Name="NumberOfItems" Type="int" />
+          <Property Name="TotalCost" Type="int" />
+          <Property Name="TotalDays" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="Security" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRentedCD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="CDId" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DOB" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="Isdeleted" Type="bit" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="bigint" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserTypeMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SoundTrack.dbo.CDsTypeView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CDsTypeView">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Publisher" Type="varchar" MaxLength="100" />
+          <Property Name="Genre" Type="varchar" MaxLength="100" />
+          <Property Name="Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SoundTrack.dbo.MembershipRequest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MembershipRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DOB" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MemberShipId" Type="int" Nullable="false" />
+          <Property Name="MembershipNumber" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CD_CDType">
+          <End Role="CDType" Type="Self.CDType" Multiplicity="1" />
+          <End Role="CD" Type="Self.CD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CDType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CD">
+              <PropertyRef Name="CDTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CD_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="CD" Type="Self.CD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CD">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipToUser_MembershipType">
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="0..1" />
+          <End Role="MembershipToUser" Type="Self.MembershipToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipToUser">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipToUser_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="MembershipToUser" Type="Self.MembershipToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipToUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRentedCD_CD">
+          <End Role="CD" Type="Self.CD" Multiplicity="0..1" />
+          <End Role="UserRentedCD" Type="Self.UserRentedCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CD">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRentedCD">
+              <PropertyRef Name="CDId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRentedCD_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="UserRentedCD" Type="Self.UserRentedCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRentedCD">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserTypeMaster">
+          <End Role="UserTypeMaster" Type="Self.UserTypeMaster" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_GetCD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="filter" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetCDData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pageno" Type="int" Mode="In" />
+          <Parameter Name="filter" Type="varchar" Mode="In" />
+          <Parameter Name="pagesize" Type="int" Mode="In" />
+          <Parameter Name="Sorting" Type="varchar" Mode="In" />
+          <Parameter Name="SortOrder" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetMembershipRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pageno" Type="int" Mode="In" />
+          <Parameter Name="filter" Type="varchar" Mode="In" />
+          <Parameter Name="pagesize" Type="int" Mode="In" />
+          <Parameter Name="Sorting" Type="varchar" Mode="In" />
+          <Parameter Name="SortOrder" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetUsersData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pageno" Type="int" Mode="In" />
+          <Parameter Name="filter" Type="varchar" Mode="In" />
+          <Parameter Name="pagesize" Type="int" Mode="In" />
+          <Parameter Name="Sorting" Type="varchar" Mode="In" />
+          <Parameter Name="SortOrder" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SoundTrackModelStoreContainer">
+          <EntitySet Name="CD" EntityType="Self.CD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CDType" EntityType="Self.CDType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipToUser" EntityType="Self.MembershipToUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipType" EntityType="Self.MembershipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRentedCD" EntityType="Self.UserRentedCD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypeMaster" EntityType="Self.UserTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CDsTypeView" EntityType="Self.CDsTypeView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CDsTypeView].[Id] AS [Id], 
+    [CDsTypeView].[Title] AS [Title], 
+    [CDsTypeView].[Publisher] AS [Publisher], 
+    [CDsTypeView].[Genre] AS [Genre], 
+    [CDsTypeView].[Type] AS [Type], 
+    [CDsTypeView].[Cost] AS [Cost]
+    FROM [dbo].[CDsTypeView] AS [CDsTypeView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MembershipRequest" EntityType="Self.MembershipRequest" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MembershipRequest].[Id] AS [Id], 
+    [MembershipRequest].[Name] AS [Name], 
+    [MembershipRequest].[Email] AS [Email], 
+    [MembershipRequest].[DOB] AS [DOB], 
+    [MembershipRequest].[MemberShipId] AS [MemberShipId], 
+    [MembershipRequest].[MembershipNumber] AS [MembershipNumber]
+    FROM [dbo].[MembershipRequest] AS [MembershipRequest]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CD_CDType" Association="Self.FK_CD_CDType">
+            <End Role="CDType" EntitySet="CDType" />
+            <End Role="CD" EntitySet="CD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CD_Users" Association="Self.FK_CD_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CD" EntitySet="CD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipToUser_MembershipType" Association="Self.FK_MembershipToUser_MembershipType">
+            <End Role="MembershipType" EntitySet="MembershipType" />
+            <End Role="MembershipToUser" EntitySet="MembershipToUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipToUser_Users" Association="Self.FK_MembershipToUser_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MembershipToUser" EntitySet="MembershipToUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRentedCD_CD" Association="Self.FK_UserRentedCD_CD">
+            <End Role="CD" EntitySet="CD" />
+            <End Role="UserRentedCD" EntitySet="UserRentedCD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRentedCD_Order" Association="Self.FK_UserRentedCD_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="UserRentedCD" EntitySet="UserRentedCD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserTypeMaster" Association="Self.FK_Users_UserTypeMaster">
+            <End Role="UserTypeMaster" EntitySet="UserTypeMaster" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoundTrackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Publisher" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Genre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Artist" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Composer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GameMode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Developer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CDTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" />
+          <Property Name="TotalCD" Type="Int32" />
+          <Property Name="CDLeft" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CDType" Relationship="Self.FK_CD_CDType" FromRole="CD" ToRole="CDType" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CD_Users" FromRole="CD" ToRole="Users" />
+          <NavigationProperty Name="UserRentedCDs" Relationship="SoundTrackModel.FK_UserRentedCD_CD" FromRole="CD" ToRole="UserRentedCD" />
+          <Property Name="ImageUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CDType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CDs" Relationship="Self.FK_CD_CDType" FromRole="CDType" ToRole="CD" />
+        </EntityType>
+        <EntityType Name="MembershipToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MembershipTypeId" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateExpired" Type="DateTime" Precision="3" />
+          <Property Name="IsRequested" Type="Boolean" />
+          <Property Name="IsExpired" Type="Boolean" />
+          <NavigationProperty Name="MembershipType" Relationship="Self.FK_MembershipToUser_MembershipType" FromRole="MembershipToUser" ToRole="MembershipType" />
+          <NavigationProperty Name="User" Relationship="Self.FK_MembershipToUser_Users" FromRole="MembershipToUser" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="MembershipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MembershipToUsers" Relationship="Self.FK_MembershipToUser_MembershipType" FromRole="MembershipType" ToRole="MembershipToUser" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="NumberOfItems" Type="Int32" />
+          <Property Name="TotalCost" Type="Int32" />
+          <Property Name="TotalDays" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Order_Users" FromRole="Order" ToRole="Users" />
+          <NavigationProperty Name="UserRentedCDs" Relationship="Self.FK_UserRentedCD_Order" FromRole="Order" ToRole="UserRentedCD" />
+          <Property Name="Security" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserRentedCD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="CDId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_UserRentedCD_Order" FromRole="UserRentedCD" ToRole="Order" />
+          <NavigationProperty Name="CD" Relationship="SoundTrackModel.FK_UserRentedCD_CD" FromRole="UserRentedCD" ToRole="CD" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="Isdeleted" Type="Boolean" />
+          <NavigationProperty Name="CDs" Relationship="Self.FK_CD_Users" FromRole="Users" ToRole="CD" />
+          <NavigationProperty Name="MembershipToUsers" Relationship="Self.FK_MembershipToUser_Users" FromRole="Users" ToRole="MembershipToUser" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Users" FromRole="Users" ToRole="Order" />
+          <NavigationProperty Name="UserTypeMaster" Relationship="Self.FK_Users_UserTypeMaster" FromRole="Users" ToRole="UserTypeMaster" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="Int64" />
+          <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserTypeMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserTypeMaster" FromRole="UserTypeMaster" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_CD_CDType">
+          <End Role="CDType" Type="Self.CDType" Multiplicity="1" />
+          <End Role="CD" Type="Self.CD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CDType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CD">
+              <PropertyRef Name="CDTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CD_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CD" Type="Self.CD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CD">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipToUser_MembershipType">
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="0..1" />
+          <End Role="MembershipToUser" Type="Self.MembershipToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipToUser">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipToUser_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="MembershipToUser" Type="Self.MembershipToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipToUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRentedCD_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="UserRentedCD" Type="Self.UserRentedCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRentedCD">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserTypeMaster">
+          <End Role="UserTypeMaster" Type="Self.UserTypeMaster" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoundTrackEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CDs" EntityType="Self.CD" />
+          <EntitySet Name="CDTypes" EntityType="Self.CDType" />
+          <EntitySet Name="MembershipToUsers" EntityType="Self.MembershipToUser" />
+          <EntitySet Name="MembershipTypes" EntityType="Self.MembershipType" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="UserRentedCDs" EntityType="Self.UserRentedCD" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypeMasters" EntityType="Self.UserTypeMaster" />
+          <AssociationSet Name="FK_CD_CDType" Association="Self.FK_CD_CDType">
+            <End Role="CDType" EntitySet="CDTypes" />
+            <End Role="CD" EntitySet="CDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CD_Users" Association="Self.FK_CD_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CD" EntitySet="CDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipToUser_MembershipType" Association="Self.FK_MembershipToUser_MembershipType">
+            <End Role="MembershipType" EntitySet="MembershipTypes" />
+            <End Role="MembershipToUser" EntitySet="MembershipToUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipToUser_Users" Association="Self.FK_MembershipToUser_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MembershipToUser" EntitySet="MembershipToUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRentedCD_Order" Association="Self.FK_UserRentedCD_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="UserRentedCD" EntitySet="UserRentedCDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserTypeMaster" Association="Self.FK_Users_UserTypeMaster">
+            <End Role="UserTypeMaster" EntitySet="UserTypeMasters" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRentedCD_CD" Association="SoundTrackModel.FK_UserRentedCD_CD">
+            <End Role="CD" EntitySet="CDs" />
+            <End Role="UserRentedCD" EntitySet="UserRentedCDs" />
+          </AssociationSet>
+          <EntitySet Name="CDsTypeViews" EntityType="SoundTrackModel.CDsTypeView" />
+          <FunctionImport Name="sp_GetCDData" EntitySet="CDsTypeViews" ReturnType="Collection(SoundTrackModel.CDsTypeView)">
+            <Parameter Name="pageno" Mode="In" Type="Int32" />
+            <Parameter Name="filter" Mode="In" Type="String" />
+            <Parameter Name="pagesize" Mode="In" Type="Int32" />
+            <Parameter Name="Sorting" Mode="In" Type="String" />
+            <Parameter Name="SortOrder" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetUsersData" EntitySet="Users" ReturnType="Collection(SoundTrackModel.User)">
+            <Parameter Name="pageno" Mode="In" Type="Int32" />
+            <Parameter Name="filter" Mode="In" Type="String" />
+            <Parameter Name="pagesize" Mode="In" Type="Int32" />
+            <Parameter Name="Sorting" Mode="In" Type="String" />
+            <Parameter Name="SortOrder" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="MembershipRequests" EntityType="SoundTrackModel.MembershipRequest" />
+          <FunctionImport Name="sp_GetMembershipRequest" EntitySet="MembershipRequests" ReturnType="Collection(SoundTrackModel.MembershipRequest)">
+            <Parameter Name="pageno" Mode="In" Type="Int32" />
+            <Parameter Name="filter" Mode="In" Type="String" />
+            <Parameter Name="pagesize" Mode="In" Type="Int32" />
+            <Parameter Name="Sorting" Mode="In" Type="String" />
+            <Parameter Name="SortOrder" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetCD" ReturnType="Collection(SoundTrackModel.sp_GetCD_Result)">
+          <Parameter Name="filter" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <Association Name="FK_UserRentedCD_CD">
+          <End Type="SoundTrackModel.CD" Role="CD" Multiplicity="0..1" />
+          <End Type="SoundTrackModel.UserRentedCD" Role="UserRentedCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CD">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRentedCD">
+              <PropertyRef Name="CDId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CDsTypeView">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Publisher" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Genre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MembershipRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MemberShipId" Type="Int32" Nullable="false" />
+          <Property Name="MembershipNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="sp_GetCD_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Publisher" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Genre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Artist" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Composer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Language" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GameMode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Developer" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CDTypeId" Nullable="false" />
+          <Property Type="Int32" Name="Cost" Nullable="true" />
+          <Property Type="Int32" Name="TotalCD" Nullable="true" />
+          <Property Type="Int32" Name="CDLeft" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DeletedBy" Nullable="true" />
+          <Property Type="DateTime" Name="DeletedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoundTrackModelStoreContainer" CdmEntityContainer="SoundTrackEntities">
+          <EntitySetMapping Name="CDs">
+            <EntityTypeMapping TypeName="SoundTrackModel.CD">
+              <MappingFragment StoreEntitySet="CD">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Artist" ColumnName="Artist" />
+                <ScalarProperty Name="Composer" ColumnName="Composer" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="GameMode" ColumnName="GameMode" />
+                <ScalarProperty Name="Developer" ColumnName="Developer" />
+                <ScalarProperty Name="CDTypeId" ColumnName="CDTypeId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="TotalCD" ColumnName="TotalCD" />
+                <ScalarProperty Name="CDLeft" ColumnName="CDLeft" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CDTypes">
+            <EntityTypeMapping TypeName="SoundTrackModel.CDType">
+              <MappingFragment StoreEntitySet="CDType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipToUsers">
+            <EntityTypeMapping TypeName="SoundTrackModel.MembershipToUser">
+              <MappingFragment StoreEntitySet="MembershipToUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MembershipNumber" ColumnName="MembershipNumber" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+                <ScalarProperty Name="IsRequested" ColumnName="IsRequested" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipTypes">
+            <EntityTypeMapping TypeName="SoundTrackModel.MembershipType">
+              <MappingFragment StoreEntitySet="MembershipType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="SoundTrackModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Security" ColumnName="Security" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="NumberOfItems" ColumnName="NumberOfItems" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRentedCDs">
+            <EntityTypeMapping TypeName="SoundTrackModel.UserRentedCD">
+              <MappingFragment StoreEntitySet="UserRentedCD">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CDId" ColumnName="CDId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SoundTrackModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypeMasters">
+            <EntityTypeMapping TypeName="SoundTrackModel.UserTypeMaster">
+              <MappingFragment StoreEntitySet="UserTypeMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CDsTypeViews">
+            <EntityTypeMapping TypeName="SoundTrackModel.CDsTypeView">
+              <MappingFragment StoreEntitySet="CDsTypeView">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCDData" FunctionName="SoundTrackModel.Store.sp_GetCDData" />
+          <FunctionImportMapping FunctionImportName="sp_GetUsersData" FunctionName="SoundTrackModel.Store.sp_GetUsersData" />
+          <EntitySetMapping Name="MembershipRequests">
+            <EntityTypeMapping TypeName="SoundTrackModel.MembershipRequest">
+              <MappingFragment StoreEntitySet="MembershipRequest">
+                <ScalarProperty Name="MembershipNumber" ColumnName="MembershipNumber" />
+                <ScalarProperty Name="MemberShipId" ColumnName="MemberShipId" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetMembershipRequest" FunctionName="SoundTrackModel.Store.sp_GetMembershipRequest" />
+          <FunctionImportMapping FunctionImportName="sp_GetCD" FunctionName="SoundTrackModel.Store.sp_GetCD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SoundTrackModel.sp_GetCD_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Artist" ColumnName="Artist" />
+                <ScalarProperty Name="Composer" ColumnName="Composer" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="GameMode" ColumnName="GameMode" />
+                <ScalarProperty Name="Developer" ColumnName="Developer" />
+                <ScalarProperty Name="CDTypeId" ColumnName="CDTypeId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="TotalCD" ColumnName="TotalCD" />
+                <ScalarProperty Name="CDLeft" ColumnName="CDLeft" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

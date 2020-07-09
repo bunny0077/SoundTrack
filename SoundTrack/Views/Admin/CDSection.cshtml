@@ -1,0 +1,85 @@
+﻿
+<div id="CDSection" style="display:none;">
+    <span class="d-flex justify-content-center h3 bg-light py-2"> CD's Records</span>
+    <div class="d-md-flex col-md-12 p-0">
+        <div class="ml-auto">
+            <button type="button" class="btn btn-info mb-3" id="addCDBtn"
+                    data-toggle="modal" data-target="#addCDModal">
+                <i class="fas fa-plus mr-2"></i>Add CD
+            </button>
+        </div>
+    </div>
+    <table class="table table-striped" id="CDTable" style="width:100%">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Publisher</th>
+                <th>Gerne</th>
+                <th>Type</th>
+                <th>Cost</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+
+<div id="cdViewSection" style="display:none;">
+    <span class="d-flex justify-content-center h3 bg-light py-2"> CD View</span>
+    <div class="d-flex justify-content-center">
+        <table class="table table-striped col-md-10" id="CDViewTable">
+            <tr>
+                <td>Title</td>
+                <td id="cdTitle"></td>
+            </tr>
+            <tr>
+                <td>Publisher</td>
+                <td id="cdPublisher"></td>
+            </tr>
+            <tr>
+                <td>Genre</td>
+                <td id="cdGenre"></td>
+            </tr>
+            <tr>
+                <td>CD Type</td>
+                <td id="CDTypeId"></td>
+            </tr>
+            <tr class="cdGame">
+                <td>Game Mode</td>
+                <td id="cdGameMode"></td>
+            </tr>
+            <tr class="cdGame">
+                <td>Developer</td>
+                <td id="cdDeveloper"></td>
+            </tr>
+            <tr class="cdMusic">
+                <td>Artist</td>
+                <td id="cdArtist"></td>
+            </tr>
+            <tr class="cdMusic">
+                <td>Composer</td>
+                <td id="cdComposer"></td>
+            </tr>
+            <tr class="cdMusic">
+                <td>Language</td>
+                <td id="cdLanguage"></td>
+            </tr>
+            <tr>
+                <td>Cost</td>
+                <td id="cdCost"></td>
+            </tr>
+            <tr>
+                <td>Total CDs</td>
+                <td id="cdTotal"></td>
+            </tr>
+            <tr>
+                <td>CDs Left</td>
+                <td id="cdLeft"></td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+</div>
+

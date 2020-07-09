@@ -1,0 +1,47 @@
+﻿.footerDiv {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.loginDiv {
+    margin-top: 100px !important;
+}
+
+#memberShip, #logOutList {
+    display: none;
+}
+
+#carouselSoundTrack .imageProp {
+    height: 300px !important;
+}
+
+.card-margin {
+    margin-right: 0.5rem !important;
+    margin-left: 3rem !important;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error, .errorEmail {
+    border: 2px solid red;
+}
+
+
+.fontCustomSize {
+    font-size: 25px;
+}
+/*.navbar-nav > li > input {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    line-height: 20px !important;
+}*/
+.img-dim {
+    width: 100px !important;
+}
+
+#rentingSection{
+    display: none;
+}
