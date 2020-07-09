@@ -761,7 +761,7 @@ function logoutUser() {
         }
     });
 }
-//Restrict Date Function
+//Restrict Date Function in Admin
 function restrictDate() {
     var dtToday = new Date();
 
