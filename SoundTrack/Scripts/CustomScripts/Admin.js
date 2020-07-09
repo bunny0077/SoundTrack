@@ -711,6 +711,7 @@ function emptyTextBoxes() {
     $('.validation-summary-errors').addClass('validation-summary-valid');
     $('.validation-summary-errors').removeClass('validation-summary-errors');
 
+
     $('#artist').val("");
     $('#composer').val("");
     $('#language').val("");
